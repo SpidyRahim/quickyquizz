@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
+  <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+  <title>Teacher Signup</title>
+  <meta charset="utf-8">
+  {% load static %}
+  {% load widget_tweaks %}
+  <link rel="stylesheet" href="{% static 'styles_signup.css' %}">
+  <style>
+    /* Stylish button style */
+    .custom-button {
+        display: inline-block;
+        padding: 10px 20px;
+        background: linear-gradient(45deg, #13547a, #80d0c7);
+        color: #fff;
+        border: none;
+        border-radius: 30px;
+        text-decoration: none;
+        transition: background 0.9s ease-in-out;
+    }
+
+    /* Hover effect */
+    .custom-button:hover {
+        background: linear-gradient(45deg, #ee9ca7, #ffdde1);
+    }
+    /* Custom form styling */
+    .form-container {
+            background-color: #f5f5f5;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 30px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Center the form */
+        .center-form {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+</style>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg bg-light shadow">
+    <img src="{% static 'qq.png' %}" alt="Logo" width="150" height="80" class="logos">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item mx-2">
+          <a class="custom-button" href="../">Home</a>
+        </li>
+        <li class="nav-item mx-2">
+          <a class="custom-button" href="{% url 'about' %}">About Us</a>
+        </li>
+        <li class="nav-item dropdown login">
+          <a class="nav-link dropdown-toggle fonts" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Login
+          </a>
+          <ul class="dropdown-menu ">
+            <li><a class="dropdown-item fonts" href="{% url 'tlogin' %}">Teacher</a></li>
+            <li><a class="dropdown-item fonts" href="{% url 'slogin' %}">Student</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+    <div class="container-fluid center-form">
+      <div class="form-container">
+          <h3 class="text-center" style="color: #F98012;">TEACHER SIGNUP</h3>
+          <form method="POST" enctype="multipart/form-data">
+              {% csrf_token %}
+              <div class="form-group">
+                  <label for="username">Username</label>
+                  {% render_field userForm.username|attr:'required:true' class="form-control" placeholder="Username" %}
+              </div>
+              <div class="form-group">
+                  <label for="inputPassword4">Password</label>
+                  {% render_field userForm.password|attr:'required:true' class="form-control" placeholder="Password" %}
+              </div>
+              <div class="row">
+                  <div class="col-md-6">
+                      <div class="form-group">
+                          <label for="first_name">First Name</label>
+                          {% render_field userForm.first_name|attr:'required:true' class="form-control" placeholder="First Name" %}
+                      </div>
+                  </div>
+                  <div class="col-md-6">
+                      <div class="form-group">
+                          <label for="last_name">Last Name</label>
+                          {% render_field userForm.last_name|attr:'required:true' class="form-control" placeholder="Last Name" %}
+                      </div>
+                  </div>
+              </div>
+              <div class="form-group">
+                  <label for="email">Email</label>
+                  {% render_field teacherForm.email|attr:'required:true' class="form-control" placeholder="example@example.com" %}
+              </div>
+              <div class="text-center mt-4">
+                  <button type="submit" class="btn custom-button">Sign Up</button>
+              </div>
+          </form>
+          <p class="text-center mt-3"><a href="{% url 'tlogin' %}" style="color:#FFCFA6;">Already have an account</a></p>
+      </div>
+  </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+      crossorigin="anonymous"></script>
+</body>
+
+</html>

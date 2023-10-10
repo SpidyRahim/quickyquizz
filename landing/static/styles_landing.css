@@ -1,0 +1,74 @@
+.dropdown-item:active{
+background-color:#F98012
+}
+
+.login{
+padding-left: 5rem;
+padding-right: 5rem}
+
+.about{
+padding-left: 5rem;
+}
+
+.logos {
+margin-left: 7%;
+ }
+
+h1 {
+font-size: 50px;
+line-height: 70px;
+margin-left: 5%;
+margin-top: 30%;
+font-family:'Poppins';
+}
+
+.hp {
+font-family:'Poppins';
+line-height: 30px;
+font-size: 18px;
+text-align: center !important;
+}
+
+.butt {
+background-color: #F98012;
+color: white;
+font-family:'Poppins';
+margin-top: 30%;
+margin-left: 15%;
+font-size: 18px;
+}
+
+.butabt {
+background-color: #F98012;
+color: white;
+font-family:'Poppins';
+}
+
+.fonts{
+font-family:'Poppins';
+font-size: 16px;
+}
+
+.hr{
+background-color: #F98012;
+color: #F98012;
+border-width:2px;
+}
+
+.btns {
+background-color: white;
+color: #F98012;
+border-color: #F98012;
+font-family:'Poppins';
+font-size: 16px;
+}
+    
+.btns:focus {
+color: black;
+border-color: black;
+}
+    
+.btns:hover {
+color: black;
+border-color: black;
+}

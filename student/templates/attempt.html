@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+    <title>Attempt Quiz</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles_student.css' %}">
+    <style>
+        /* Stylish button style */
+        .custom-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background: linear-gradient(45deg, #13547a, #80d0c7);
+            color: #fff;
+            border: none;
+            border-radius: 30px;
+            text-decoration: none;
+            transition: background 0.9s ease-in-out;
+        }
+
+        /* Hover effect */
+        .custom-button:hover {
+            background: linear-gradient(45deg, #ee9ca7, #ffdde1);
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-light shadow">
+        <img src="{% static 'qq.png' %}" alt="Logo" width="150" height="80" class="logos">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item mx-2">
+                    <a class="custom-button" href="{% url 'sdashboard' %}">Dashboard</a>
+                </li>
+                <li class="nav-item mx-2">
+                    <a class="custom-button" href="{% url 'grades' %}">Grades</a>
+                </li>
+                <li class="nav-item mx-2">
+                    <a class="nav-link fonts logout" aria-expanded="false" href="../../">
+                        <img src="{% static 'logout.png' %}" alt="Logo" width="30">
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <br>
+    <div class="container lbl mt-5 mb-5 fonts" style="padding-left: 10%;padding-right:10%">
+        <h2 style="font-weight:bold;"> {{quiz.quiz_name}}</h2>
+        <br>
+        <div class="px-4 py-3">
+            <div align="center" class="row py-3 mb-4 rounded" style="background: #FFCFA6;">
+                <p><b>Instructions:</b></p>
+                <p>{{quiz.instructions}}</p>
+            </div>
+
+            <form class="form" autocomplete="off" onsubmit="return saveAns()" action="/student/calculate-marks"
+                method="POST">
+                {% csrf_token %}
+
+                {% for q in questions %}
+
+                <div class="row pt-3 pb-0 rounded mb-3 pb-2" style="background: #F2F2F2;">
+                    <b>
+                        <p>{{ forloop.counter }}. {{ q.question}}</p>
+                    </b>
+
+                    <input type="hidden" name="csrfmiddlewaretoken"
+                        value="C24rUotmdHawVQJL3KrqiWxvti8UffOFYUc8TRbZtLt36AVLdP3jbkzUVe3beRAa">
+
+                    <div class="form-check mx-4">
+                        <input class="form-check-input" type="radio" name="{{ forloop.counter }}" id="{{q.option1}}"
+                            value="Option1">
+                        <label class="form-check-label" for="option1">
+                            {{q.option1}}
+                        </label>
+                    </div>
+
+                    <div class="form-check mx-4">
+                        <input class="form-check-input" type="radio" name="{{ forloop.counter }}" id="{{q.option2}}"
+                            value="Option2">
+                        <label class="form-check-label" for="option2">
+                            {{q.option2}}
+                        </label>
+                    </div>
+
+
+                    <div class="form-check mx-4">
+                        <input class="form-check-input" type="radio" name="{{ forloop.counter }}" id="{{q.option3}}"
+                            value="Option3">
+                        <label class="form-check-label" for="option3">
+                            {{q.option3}}
+                        </label>
+                    </div>
+                </div>
+
+                {% endfor %}
+                <br>
+                <div class="row">
+                    <div class="d-flex justify-content-end">
+                        <button type="submit" value="submit" class="btns btn px-3 py-2"> End Quiz</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+    </div>
+    <script>
+        function saveAns() {
+
+            var ele = document.getElementsByTagName('input');
+            for (i = 0; i < ele.length; i++) {
+                if (ele[i].type = "radio") {
+                    if (ele[i].checked) {
+                        setCookie(ele[i].name, ele[i].value, 3)
+                    }
+                }
+            }
+
+        }
+
+        function setCookie(cname, cvalue, exdays) {
+            var d = new Date();
+            d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+            var expires = "expires=" + d.toUTCString();
+            document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+        }
+
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

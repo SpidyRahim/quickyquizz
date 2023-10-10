@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+    <title>Teacher Dashboard</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles_createquiz.css' %}">
+    <style>
+        /* Stylish button style */
+        .custom-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background: linear-gradient(45deg, #13547a, #80d0c7);
+            color: #fff;
+            border: none;
+            border-radius: 30px;
+            text-decoration: none;
+            transition: background 0.9s ease-in-out;
+        }
+
+        /* Hover effect */
+        .custom-button:hover {
+            background: linear-gradient(45deg, #ee9ca7, #ffdde1);
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-light shadow">
+        <img src="{% static 'qq.png' %}" alt="Logo" width="150" height="80" class="logos">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item login">
+                    <a href="{% url 'create'%}">
+                        <button class="custom-button"> Create
+                            Quiz</button>
+                    </a>
+                </li>
+                <li class="nav-item about">
+                    <a class="nav-link fonts" aria-expanded="false" href="{% url 'logout' %}">
+                        <img src="{% static 'logout.png' %}" alt="Logout" width="30">
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <br>
+    <div class="container lbl mt-5 mb-5 fonts">
+        <h2 align="center" style="font-weight:bold; color:#117180;padding-left: 20%;padding-right: 20%;"> Hello
+            {{name}}! </h2>
+        <br>
+        <br>
+
+        {% if quizes %}
+        {% for q in quizes %}
+        <!-- <div class="row align-items-center rounded" style="background: #F2F2F2; ">
+            <div class="col-md-6">
+                <p class="m-0 p-2"><b>{{q.quiz_name}}</b></p>
+            </div>
+            <div class="col-md-2">
+                <a href="{% url 'review' q.id  %}">
+                    <button class="btn m-0 p-2" style="color:#F98012; border-color: #F2F2F2;"> View Questions </button>
+                </a>
+            </div>
+            <div class="col-md-2 d-flex justify-content-center">
+                <a href="{% url 'qna' %}">
+                    <button class="btn m-0 p-2" style="color:#F98012; border-color: #F2F2F2;"> Add Questions </button>
+                </a>
+            </div>
+            <div class="col-md-2 d-flex justify-content-center">
+                <a href="{% url 'delete' q.id  %}">
+                    <button class="btn m-0 p-2" style="color:red; border-color: #F2F2F2;"> Delete </button>
+                </a>
+            </div>
+        </div> -->
+        <div class="row align-items-center rounded"
+            style="background-color: #1e3c72; padding: 10px; margin: 10px 0; color: #fff;">
+            <div class="col-md-6">
+                <h5><b>Quiz Name : {{q.quiz_name}}</b></h5>
+            </div>
+            <div class="col-md-2">
+                <a href="{% url 'review' q.id %}">
+                    <button class="btn btn-warning btn-sm"
+                        style="border-color: #12daf9; background-color: #fff; color: #1e3c72; border-radius: 30px;">View
+                        Questions</button>
+                </a>
+            </div>
+            <div class="col-md-2 d-flex justify-content-center">
+                <a href="{% url 'qna' %}">
+                    <button class="btn btn-info btn-sm"
+                        style="border-color: #12daf9; background-color: #fff; color: #1e3c72;border-radius: 30px;">Add
+                        Questions</button>
+                </a>
+            </div>
+            <div class="col-md-2 d-flex justify-content-center">
+                <a href="{% url 'delete' q.id %}">
+                    <button class="btn btn-danger btn-sm" style="border-radius: 30px;">Delete</button>
+                </a>
+            </div>
+        </div>
+
+        <br>
+        {% endfor %}
+
+        {% else %}
+        <div class="row">
+            <div class="col-md-6">
+                <img src="https://i.gifer.com/origin/a7/a7b6de0113f0a8fbeea873b577f4c25d.gif" class="mx-auto" style="width: 90%;" alt="dashboard">
+            </div>
+            <div class="col-md-6">
+                <br><br><br><br>
+                <div class="row mx-auto" style="font-size: 20px; padding-left:10%; padding-right:10%;">
+                    <center>
+                        <div class="alert mt-5 rounded" role="alert" style="background-color: #F2F2F2;">
+                            You don't have any quizes.
+                            <br>Please<a href="{% url 'create'%}" style="text-decoration: none;"><b
+                                    style="color:#F98012;"> create a quiz</b> </a>to continue!</p>
+                        </div>
+                    </center>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

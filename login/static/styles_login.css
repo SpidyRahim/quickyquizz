@@ -1,0 +1,51 @@
+.dropdown-item:active{
+background-color:#F98012
+}
+
+.login{
+padding-left: 5rem;
+padding-right: 5rem}
+
+.about{
+padding-left: 5rem;
+}
+
+.logos {
+margin-left: 7%;
+ }
+
+.titles {
+font-size: 30px;
+font-family:'Poppins';
+color: #F98012;
+}
+
+.hp {
+margin-left: 5%;
+font-family:'Poppins';
+line-height: 30px;
+font-size: 20px;
+}
+
+.butt {
+background-color: #F98012;
+color: white;
+font-family:'Poppins';
+font-size: 16px;
+}
+
+.fonts{
+font-family:'Poppins';
+font-size: 16px;
+}
+
+.hr{
+background-color: #F98012;
+color: #F98012;
+border-width:2px;
+}
+
+.form-control:focus{
+    border-color: #FFCFA6;
+    box-shadow: 0 0 0  .25rem rgba(252,152,34,.25);
+    }

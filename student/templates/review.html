@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+    <title>Review Quiz: {{ quiz.quiz_name }}</title>
+    {% load widget_tweaks %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles_student.css' %}">
+    <style>
+        /* Stylish button style */
+        .custom-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background: linear-gradient(45deg, #13547a, #80d0c7);
+            color: #fff;
+            border: none;
+            border-radius: 20px;
+            text-decoration: none;
+            transition: background 0.9s ease-in-out;
+        }
+
+        /* Hover effect */
+        .custom-button:hover {
+            background: linear-gradient(45deg, #ee9ca7, #ffdde1);
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg bg-light shadow">
+        <img src="{% static 'qq.png' %}" alt="Logo" width="150" height="80" class="logos">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item mx-2">
+                    <a class="custom-button" aria-current="page" href="{% url 'sdashboard' %}">Dashboard</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav">
+                <li class="nav-item mx-2">
+                    <a href="{% url 'logout' %}">
+                        <img src="{% static 'logout.png' %}" alt="Logout" width="30">
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <br>
+    <div class="container lbl mt-5 mb-5 fonts">
+        <div style="text-align: center;">
+            <img src="https://i2.wp.com/codemyui.com/wp-content/uploads/2020/04/Animated-5-Star-Rating-With-Emotion-Faces.gif"
+                alt="Banner" style="width: 600px; height: 250px;">
+        </div>
+        <br>
+        <center>
+            <h2 style="font-weight:bold; color:#F98012;padding-left: 20%;padding-right: 20%;">Rate The Quiz Between 1 to
+                7
+            </h2>
+        </center>
+        <br>
+        <br>
+        <div style="padding-left:10%; padding-right:10%;">
+            <div class="row align-items-center rounded" style="background: #F2F2F2;">
+                <div class="col-md-6">
+                    <p class="m-0 p-2"><b>Quiz Name: {{ quiz.quiz_name }}</b></p>
+                </div>
+                <div class="col-md-6 d-flex justify-content-end">
+                    <a href="{% url 'grades' %}" class="btn btn-primary m-0 p-2"
+                        style="color:#ffffff; border-radius: 20px;">Back to
+                        Grades</a>
+                </div>
+            </div>
+            <br>
+            <!-- <div align="center" class="quiz">
+                <h3>Rate The Quiz: {{ quiz.quiz_name }}</h3>
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit" class="btn btn-primary">Submit Review</button>
+                </form>
+            </div> -->
+            <div align="center" class="quiz">
+                <h3>Rate The Quiz: {{ quiz.quiz_name }}</h3>
+                <form method="post">
+                    {% csrf_token %}
+
+                    <!-- Customize form fields using widget_tweaks -->
+                    <div class="form-group">
+                        {{ form.rating|add_class:"form-control" }}
+                    </div>
+
+                    <!-- Add padding between form fields and button -->
+                    <div style="padding-top: 10px;">
+                        <button type="submit" class="btn btn-primary" style="border-radius: 20px;">Submit
+                            Review</button>
+                    </div>
+                </form>
+            </div>
+
+
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

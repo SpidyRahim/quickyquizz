@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
+    <title> Abous Us </title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles_landing.css' %}">
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+    <style>
+        /* Stylish button style */
+        .custom-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background: linear-gradient(45deg, #13547a, #80d0c7);
+            color: #fff;
+            border: none;
+            border-radius: 30px;
+            text-decoration: none;
+            transition: background 0.9s ease-in-out;
+        }
+
+        /* Hover effect */
+        .custom-button:hover {
+            background: linear-gradient(45deg, #ee9ca7, #ffdde1);
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-light shadow">
+        <img src="{% static 'qq.png' %}" alt="Logo" width="150" height="80" class="logos">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item mx-2">
+                    <a class="custom-button" aria-current="page" href="{% url 'landing' %}">Home</a>
+                </li>
+                <li class="nav-item dropdown login">
+                    <a class="nav-link dropdown-toggle fonts" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        Login
+                    </a>
+                    <ul class="dropdown-menu" style="background-color: #1e3c72;">
+                        <li><a class="dropdown-item fonts" href="{% url 'tlogin' %}" style="color: #fff;">Teacher</a></li>
+                        <li><a class="dropdown-item fonts" href="{% url 'slogin' %}" style="color: #fff;">Student</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container mt-5 fonts">
+
+        <div class="row">
+
+            <p style="text-align: center; font-size : 18px; padding-right:10%; padding-left:10%; "> <br> We are an
+                online quiz platform, on a mission to connect teachers and students through distance learning.
+                We provide a unique learning journey for students facilitating educators to create effective courses
+                to ensure quality learning outcomesfor students.</p>
+        </div><br> <br>
+
+        <div align="center" class="row mb-5" style="height:100%;">
+            <div class=" col-md-6 " style="padding-left:10%;">
+                <div class="card shadow" style="height:100%;">
+                    <img src="https://discovertemplate.com/wp-content/uploads/2020/07/School-essentials-and-Education.gif" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <br>
+                        <br>
+                        <h3 class="card-title" style="color: #333333; font-weight: bold; text-align: center;"><br> For
+                            <span style="color: #F98012; font-weight: bold;">TEACHERS</span>
+                        </h3>
+                        <p class="card-text mt-3" style="text-align: center; font-size : 18px;">Teachers can create and
+                            delete their own interactive quizzes and track student progress in real-time.</p>
+                            <br><br>
+                        <center>
+                            <a href="signup/tsignup" class="btn butabt mt-3" style="border-radius: 30px;">Teacher</a>
+                        </center><br>
+                    </div>
+                </div>
+            </div>
+
+            <div class=" col-md-6 " style="padding-right:10%;">
+                <div class="card shadow">
+                    <img src="https://cdn.dribbble.com/users/1620156/screenshots/5547104/education.gif" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h3 class="card-title" style="color: #333333; font-weight: bold; text-align: center;"> For <span
+                                style="color: #F98012; font-weight: bold;">STUDENTS</span> </h3>
+                        <p class="card-text mt-3" style="text-align: center; font-size : 18px;">Students get an enhanced
+                            learning experience where they can attempt quizzes at their own pace. Can see their quiz result, leaderboard, can give rate to the quiz.</p>
+                        <center>
+                            <a href="signup/ssignup" class="butabt btn mt-3" style="border-radius: 30px;">Student</a>
+                        </center><br>
+                    </div>
+                </div>
+            </div>
+            <br><br>
+        </div>
+    </div>
+</body>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>

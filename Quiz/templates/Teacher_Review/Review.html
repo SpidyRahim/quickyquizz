@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+    <link rel="stylesheet" href="./styles_createquiz.css">
+    <title>Review</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles_createquiz.css' %}">
+    <style>
+        /* Stylish button style */
+        .custom-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background: linear-gradient(45deg, #13547a, #80d0c7);
+            color: #fff;
+            border: none;
+            border-radius: 30px;
+            text-decoration: none;
+            transition: background 0.9s ease-in-out;
+        }
+
+        /* Hover effect */
+        .custom-button:hover {
+            background: linear-gradient(45deg, #ee9ca7, #ffdde1);
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-light shadow">
+        <img src="{% static 'qq.png' %}" alt="Logo" width="150" height="80" class="logos">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="custom-button" href="{% url 'teacher-dashboard' %}">Dashboard</a>
+                </li>
+                <li class="nav-item about">
+                    <a class="nav-link fonts" aria-expanded="false" href="{% url 'logout' %}">
+                        <img src="{% static 'logout.png' %}" alt="Logo" width="30">
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <br>
+    <div class="container lbl mt-5 mb-5 fonts" style="padding-left: 10%;padding-right:10%">
+        <h2 align="center" style="font-weight:bold;">Quiz Name: {{quizName}}</h2>
+        <br>
+        <div class="px-4 py-3">
+            <div align="center" class="row py-3 mb-4 rounded" style="background: #FFCFA6;">
+                <h5><b>Instructions</b></h5>
+                <p>{{instructions}}</p>
+            </div>
+
+            {% for q in questions %}
+            <div class="row pt-3 pb-0 rounded mb-3" style="background: #F2F2F2;">
+                <b>
+                    <p>{{q.question}}</p>
+                </b>
+                <ul class="px-4">
+                    <h9>a) {{q.option1}}</h9>
+                    </br>
+                    <h9>b) {{q.option2}}</h9>
+                    </br>
+                    <h9>c) {{q.option3}}</h9>
+                </ul>
+                <p style="color:green">Correct answer :
+                    {% if q.answer == 'Option1' %}
+                    <b>{{q.option1}} </b>
+                    {% elif q.answer == 'Option2' %}
+                    <b>{{q.option2}} </b>
+                    {% elif q.answer == 'Option3' %}
+                    <b>{{q.option3}} </b>
+                    {% endif %}
+                </p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

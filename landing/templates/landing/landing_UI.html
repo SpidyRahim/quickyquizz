@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
+    <title> Quiz Time </title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles_landing.css' %}">
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+    <style>
+        /* Stylish button style */
+        .custom-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background: linear-gradient(45deg, #13547a, #80d0c7);
+            color: #fff;
+            border: none;
+            border-radius: 30px;
+            text-decoration: none;
+            transition: background 0.9s ease-in-out;
+        }
+
+        /* Hover effect */
+        .custom-button:hover {
+            background: linear-gradient(45deg, #ee9ca7, #ffdde1);
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-light shadow">
+        <img src="{% static 'qq.png' %}" alt="Logo" width="150" height="80" class="logos">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item mx-2">
+                    <a class="custom-button" href="{% url 'about' %}">About Us</a>
+                </li>
+                <li class="nav-item dropdown login">
+                    <a class="nav-link dropdown-toggle fonts" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        Login
+                    </a>
+                    <ul class="dropdown-menu" style="background-color: #1e3c72;">
+                        <li><a class="dropdown-item fonts" href="login/tlogin" style="color: #fff;">Teacher</a></li>
+                        <li><a class="dropdown-item fonts" href="login/slogin" style="color: #fff;">Student</a></li>
+                    </ul>
+                </li>
+
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row" style="width:100%">
+            <div class="col-md-6">
+                <div class="row" style="width:100%">
+                    <H1 class="mb-5"><b>
+                            <br><br>
+                            Welcome to, <br> Quicky Quiz.</b>
+                    </H1>
+                    <hr class="hr">
+                    <p class="hp mt-3">
+                        Join us on a journey to explore and expand your knowledge. QuizTime offers free, world-class
+                        quizzes for students and teachers alike. <b>Start your learning adventure with us!</b>
+                        <br>
+                        <i><b>""Sign Up Below""</b></i>
+                    </p>
+
+                </div>
+
+                <div class="row" style="width:100%">
+                    <div class="col-md-1"></div>
+                    <div class="col-sm-5">
+                        <a href="{% url 'tsignup' %}" class="btn butt" style="border-radius: 30px;">Teacher</a>
+                    </div>
+                    <div class="col-sm-5">
+                        <a href="{% url 'ssignup' %}" class="btn butt" style="border-radius: 30px;">Student</a>
+                    </div>
+                    <div class="col-md-1"></div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <br><br>
+                <img src="https://cdn.dribbble.com/users/1418633/screenshots/5106121/hi-dribbble-studiotale.gif" alt="landing" width="120%">
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

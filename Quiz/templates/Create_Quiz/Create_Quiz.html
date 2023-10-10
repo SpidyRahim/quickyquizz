@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+    <title>Create Quiz</title>
+    {% load static %}
+    {% load widget_tweaks %}
+    <link rel="stylesheet" href="{% static 'styles_createquiz.css' %}">
+    <style>
+        /* Stylish button style */
+        .custom-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background: linear-gradient(45deg, #13547a, #80d0c7);
+            color: #fff;
+            border: none;
+            border-radius: 30px;
+            text-decoration: none;
+            transition: background 0.9s ease-in-out;
+        }
+
+        /* Hover effect */
+        .custom-button:hover {
+            background: linear-gradient(45deg, #ee9ca7, #ffdde1);
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-light shadow">
+        <img src="{% static 'qq.png' %}" alt="Logo" width="150" height="80" class="logos">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="custom-button" href="{% url 'teacher-dashboard' %}">Dashboard</a>
+                </li>
+                <li class="nav-item about">
+                    <a class="nav-link fonts" aria-expanded="false" href="../">
+                        <img src="{% static 'logout.png' %}" alt="Logo" width="30">
+                    </a>
+            </ul>
+        </div>
+    </nav>
+
+    <br>
+    <div class="container lbl mt-5">
+        <form method="POST" autocomplete="off">
+            {%csrf_token%}
+            <div class=" mb-5">
+                <label for="exampleFormControlInput1" class="form-label">Quiz Title</label>
+                {% render_field createQuizForm.quiz_name class="form-control" %}
+            </div>
+            <div class="mb-5">
+                <label for="exampleFormControlTextarea1" class="form-label">Instructions</label>
+                {% render_field createQuizForm.instructions class="form-control" %}
+            </div>
+            <div class="row">
+                <div class="col-auto ms-auto">
+                    <a href="QA.html">
+                        <button type="submit" class="btn btn-success" style="border-radius: 20px;"> Create Quiz</button>
+                    </a>
+                </div>
+            </div>
+        </form>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

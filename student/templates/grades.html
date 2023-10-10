@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+    <title>Student Grades</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles_student.css' %}">
+    <style>
+        .custom-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background: linear-gradient(45deg, #13547a, #80d0c7);
+            color: #fff;
+            border: none;
+            border-radius: 30px;
+            text-decoration: none;
+            transition: background 0.9s ease-in-out;
+        }
+
+        /* Hover effect */
+        .custom-button:hover {
+            background: linear-gradient(45deg, #ee9ca7, #ffdde1);
+        }
+
+        .card {
+            background: linear-gradient(45deg, #cedfe8, #80d0c7);
+            border-radius: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-light shadow">
+        <img src="{% static 'qq.png' %}" alt="Logo" width="150" height="80" class="logos">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item mx-2">
+                    <a class="custom-button" href="{% url 'sdashboard' %}">Dashboard</a>
+                </li>
+                <li class="nav-item mx-2">
+                    <a class="custom-button" aria-current="page" href="{% url 'leaderboard'%}">Leaderboard</a>
+                </li>
+                <li class="nav-item mx-2">
+                    <a class="nav-link fonts logout" aria-expanded="false" href="{% url 'logout' %}">
+                        <img src="{% static 'logout.png' %}" alt="Logo" width="30">
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <br>
+    <div class="container lbl mt-5 mb-5 fonts">
+        <center>
+            <h2 style="font-weight:bold; color: #7612f9;"> My Grades
+            </h2>
+        </center>
+        <br> <br>
+        {% if results %}
+        {% for r in results %}
+        <div style="padding-left: 10%; padding-right: 10%;">
+            <div class="row align-items-center rounded" style="background: #9fe0d2; padding: 5px;">
+                <div class="col-md-6">
+                    <p class="m-0 p-2"><b>Quiz Name: {{r.exam}} </b></p>
+                </div>
+                <div class="col-md-3">
+                    <p class="btn btn-success" style="color: #fafafa; border-radius: 30px;"><b>You Got : {{r.correct}}
+                            Out of {{r.qCount}}</b> </p>
+                </div>
+                <div class="col-md-3">
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <p class="card-text">{{ r.submitted_date }}</p>
+                            <a href="{% url 'review_quiz' r.exam.id %}" class="btn btn-info"
+                                style="border-radius: 30px;">Rate
+                                Quiz</a>
+                            <a href="{% url 'review' r.exam.id %}" class="btn btn-secondary btn-block mt-2"
+                                style="border-radius: 30px;">Show
+                                Answer</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <br>
+        </div>
+        {% endfor %}
+        {% else %}
+        <div class="row">
+            <div class="col-md-6">
+                <img src="{% static 'dashboard.png' %}" class="mx-auto" style="width: 90%;" alt="dashboard">
+            </div>
+            <div class="col-md-6">
+                <br><br><br><br>
+                <div class="row mx-auto" style="font-size: 20px; padding-left:10%; padding-right:10%;">
+                    <center>
+                        <div class="alert mt-5 rounded" role="alert" style="background-color: #F2F2F2;">
+                            No grades to show.
+                            <br>Please <a href="{% url 'sdashboard' %}" style="text-decoration: none;"><b
+                                    style="color:#F98012;">attempt a quiz</b> </a> to continue!</p>
+                        </div>
+                    </center>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous">
+        </script>
+
+</body>
+
+</html>

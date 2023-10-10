@@ -1,0 +1,70 @@
+.butt {
+background-color: #F98012;
+color: white;
+font-family:'Poppins';
+font-size: 16px;
+}
+
+.butt:focus {
+color: black;
+border-color: black;
+}
+
+.butt:hover {
+color: black;
+border-color: black;
+}
+
+.btns {
+background-color: white;
+color: #F98012;
+border-color: #F98012;
+font-family:'Poppins';
+font-size: 16px;
+}
+
+.btns:focus {
+color: black;
+border-color: black;
+}
+
+.btns:hover {
+color: black;
+border-color: black;
+}
+
+.lbl {
+font-family:'Poppins';
+font-size: 16px;
+}
+
+.form-control:focus{
+border-color: #FFCFA6;
+box-shadow: 0 0 0  .25rem rgba(252,152,34,.25);
+}
+
+.login{
+padding-left: 5rem;
+padding-right: 5rem;}
+
+.logos {
+margin-left: 7%;
+ }
+
+.about{
+padding-right: 5rem;
+}
+
+.fonts{
+font-family:'Poppins';
+font-size: 16px;
+}
+
+.login{
+padding-left: 2rem;
+padding-right: 2rem}
+
+.dash{
+font-family:'Poppins';
+font-size: 20px;
+}
